@@ -1,0 +1,12 @@
+CC = gcc
+OBJS = usb_modeswitch.o
+LIBS = -L../lib -lusb_s -lusbpp_s ../lib/USBCALLS.LIB
+INCLUDE = -I../include
+DEF = usb_modeswitch.def
+
+usb_modeswitch.exe: $(OBJS)
+	gcc -Zomf -o usb_modeswitch.exe $(OBJS) $(LIBS) $(DEF)
+
+%.o: %.c
+	$(CC) -c $(INCLUDE) $<
+		
